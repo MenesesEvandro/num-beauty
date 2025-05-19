@@ -11,7 +11,7 @@ export const locale = {
   },
   currencies: {
     USD: { symbol: 'US$', position: 'before' }, // Overwrites default to use international prefix
-    EUR: { symbol: '€', position: 'after' },    // Explicitly define EUR for consistent formatting
+    EUR: { symbol: '€', position: 'after' }, // Explicitly define EUR for consistent formatting
   },
   units: [
     ['', ''],
