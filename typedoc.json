@@ -1,0 +1,22 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src/index.ts"],
+  "out": "docs",
+  "plugin": ["typedoc-plugin-markdown"],
+  "readme": "README.md",
+  "name": "num-beauty",
+  "exclude": ["**/node_modules/**"],
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "includeVersion": true,
+  "categorizeByGroup": true,
+  "groupOrder": [
+    "Interfaces",
+    "Type Aliases",
+    "Classes",
+    "Functions",
+    "Variables",
+    "*"
+  ],
+  "sort": ["visibility", "kind", "alphabetical"]
+}
