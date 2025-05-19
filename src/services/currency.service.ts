@@ -63,7 +63,7 @@ export function formatCurrency(
     throw new Error(`Currency ${currency} not supported for locale ${locale}`);
   }
 
-  // Format the number using Intl.NumberFormat
+  // Format the number using Intl.NumberFormat with explicit options
   const numberFormatter = new Intl.NumberFormat(locale, {
     minimumFractionDigits: stripZeros ? 0 : decimals,
     maximumFractionDigits: decimals,
@@ -85,6 +85,7 @@ export function formatCurrency(
   }
   // If we have currencyInfo, use the symbol and position defined in locale
   else if (currencyInfo) {
+    // Ensure the number has proper thousands separators
     result =
       currencyInfo.position === 'before'
         ? currencyInfo.symbol + (currencyInfo.symbol === '$' ? '' : ' ') + number
