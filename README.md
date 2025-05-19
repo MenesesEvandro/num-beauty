@@ -9,7 +9,7 @@ An ultra lightweight module for formatting numbers into human-friendly strings. 
 - 🎭 Predefined and custom masks per locale
 - 🔤 Large number abbreviation (1,234,567 → 1.23M)
 
-![NPM Version](https://img.shields.io/npm/v/%40menesesevandro%2Fnum-beauty) ![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/%40menesesevandro%2Fnum-beauty) ![Crates.io License](https://img.shields.io/crates/l/mit) ![GitHub last commit](https://img.shields.io/github/last-commit/menesesevandro/num-beauty)
+![NPM Version](https://img.shields.io/npm/v/num-beauty) ![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/num-beauty) ![Crates.io License](https://img.shields.io/crates/l/mit) ![GitHub last commit](https://img.shields.io/github/last-commit/menesesevandro/num-beauty)
 
 ## Installation
 
