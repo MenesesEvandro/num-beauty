@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>num-beauty - Lightweight Number Formatting Library</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --code-bg: #f5f5f5;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding-top: 2rem;
+            padding-bottom: 5rem;
+        }
+        h1, h2, h3, h4 {
+            color: var(--secondary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+        }
+        .feature-box {
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            background-color: #f8f9fa;
+            height: 100%;
+            transition: transform 0.3s;
+        }
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        code {
+            background-color: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: var(--code-bg);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        .api-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            background-color: #f8f9fa;
+        }
+        .locale-table {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        .locale-table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .badge {
+            margin-right: 0.5rem;
+        }
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .nav-link {
+            color: var(--secondary-color);
+        }
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        #toc {
+            position: sticky;
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero text-center">
+            <h1 class="display-4">num-beauty</h1>
+            <p class="lead">An ultra lightweight module for formatting numbers into human-friendly strings</p>
+            <div>
+                <img src="https://img.shields.io/npm/v/%40menesesevandro%2Fnum-beauty" alt="NPM Version">
+                <img src="https://img.shields.io/npm/unpacked-size/%40menesesevandro%2Fnum-beauty" alt="NPM Unpacked Size">
+                <img src="https://img.shields.io/crates/l/mit" alt="License">
+                <img src="https://img.shields.io/github/last-commit/menesesevandro/num-beauty" alt="Last Commit">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 d-none d-md-block">
+                <div id="toc">
+                    <h5>Contents</h5>
+                    <nav class="nav flex-column">
+                        <a class="nav-link" href="#features">Features</a>
+                        <a class="nav-link" href="#installation">Installation</a>
+                        <a class="nav-link" href="#quick-guide">Quick Guide</a>
+                        <a class="nav-link" href="#examples">Examples</a>
+                        <a class="nav-link" href="#options">Options</a>
+                        <a class="nav-link" href="#masks">Masks</a>
+                        <a class="nav-link" href="#rounding">Rounding Modes</a>
+                        <a class="nav-link" href="#locales">Locales</a>
+                        <a class="nav-link" href="#api">API Reference</a>
+                        <a class="nav-link" href="#contributing">Contributing</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <h2 id="features">Features</h2>
+                <div class="row mb-4">
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-box">
+                            <h5>✨ Basic Formatting</h5>
+                            <p>Thousands and decimal separators with locale support</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-box">
+                            <h5>🌎 Internationalization</h5>
+                            <p>Support for en-US, pt-BR, es-ES and more</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-box">
+                            <h5>📏 Custom Precision</h5>
+                            <p>Control decimal places with flexible options</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-box">
+                            <h5>🔄 Multiple Rounding</h5>
+                            <p>7 different rounding modes for all needs</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-box">
+                            <h5>🎭 Masks</h5>
+                            <p>Predefined and custom masks per locale</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-box">
+                            <h5>🔤 Abbreviations</h5>
+                            <p>Large number abbreviation (1,234,567 → 1.23M)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 id="installation">Installation</h2>
+                <pre><code class="language-bash"># npm
+npm install num-beauty
+
+# yarn
+yarn add num-beauty
+
+# pnpm
+pnpm add num-beauty</code></pre>
+
+                <h2 id="quick-guide">Quick Guide</h2>
+                <pre><code class="language-typescript">import { beautify } from 'num-beauty';
+
+// Basic formatting
+console.log(beautify(1234.5678)); // "1,234.57"
+
+// Large numbers
+console.log(beautify(1234567.89)); // "1,234,567.89"
+console.log(beautify(1234567.89, { abbreviated: true })); // "1.23M"
+
+// Different locales
+console.log(beautify(1234567.89, { locale: 'pt-BR' })); // "1.234.567,89"
+console.log(beautify(1234567.89, { locale: 'pt-BR', abbreviated: true })); // "1,23 mi"
+
+// Custom decimal precision
+console.log(beautify(1234.56789, { decimals: 4 })); // "1,234.5679"</code></pre>
+
+                <h2 id="examples">Usage Examples</h2>
+                
+                <h4>Currency Formatting</h4>
+                <pre><code class="language-typescript">// US Dollar
+beautify(1234.56, { locale: 'en-US', currency: 'USD' }) // "$1,234.56"
+
+// Euro
+beautify(1234.56, { locale: 'es-ES', currency: 'EUR' }) // "1.234,56 €"
+
+// Brazilian Real
+beautify(1234.56, { locale: 'pt-BR', currency: 'BRL' }) // "R$ 1.234,56"</code></pre>
+
+                <h4>Abbreviations by Locale</h4>
+                <pre><code class="language-typescript">const number = 1234567.89;
+
+// en-US
+beautify(number, { locale: 'en-US', abbreviated: true }) // "1.23M"
+
+// pt-BR
+beautify(number, { locale: 'pt-BR', abbreviated: true }) // "1,23 mi"
+
+// es-ES
+beautify(number, { locale: 'es-ES', abbreviated: true }) // "1,23M"</code></pre>
+
+                <h4>Advanced Masks</h4>
+                <pre><code class="language-typescript">// Custom mask with prefix
+beautify(123456, { mask: 'ID: ###-###' }) // "ID: 123-456"
+
+// Credit card with masking
+beautify(1234567890123456, { mask: '**** **** **** ####' }) // "**** **** **** 3456"
+
+// Product code formatting
+beautify(123456789, { mask: 'PRD-####-####-#' }) // "PRD-1234-5678-9"</code></pre>
+
+                <h2 id="options">Options</h2>
+                <ul>
+                    <li><code>locale</code>: String (default: 'en-US') - The locale to use for formatting</li>
+                    <li><code>decimals</code>: Number (default: 2) - Number of decimal places</li>
+                    <li><code>abbreviated</code>: Boolean (default: false) - Whether to use abbreviated format</li>
+                    <li><code>stripZeros</code>: Boolean (default: false) - Remove unnecessary zeros from decimal part</li>
+                    <li><code>roundingMode</code>: String (default: 'HALF_UP') - Rounding mode to use</li>
+                    <li><code>mask</code>: String | PredefinedMask - Formatting mask to apply</li>
+                    <li><code>currency</code>: String - Currency code (USD, EUR, BRL, etc.)</li>
+                </ul>
+
+                <h2 id="masks">Predefined Masks by Locale</h2>
+                <div class="api-section">
+                    <h4>American English (en-US)</h4>
+                    <ul>
+                        <li><code>ssn</code> - Social Security Number: ###-##-####</li>
+                        <li><code>ein</code> - Employer ID Number: ##-#######</li>
+                        <li><code>zip</code> - ZIP Code: #####</li>
+                        <li><code>phone</code> - Phone: (###) ###-####</li>
+                        <li><code>tax-id</code> - Tax ID (SSN): ###-##-####</li>
+                    </ul>
+                    
+                    <h4>Brazilian Portuguese (pt-BR)</h4>
+                    <ul>
+                        <li><code>cpf</code> - CPF: ###.###.###-##</li>
+                        <li><code>cnpj</code> - CNPJ: ##.###.###/####-##</li>
+                        <li><code>cep</code> - CEP: #####-###</li>
+                        <li><code>phone</code> - Phone: (##) #####-####</li>
+                        <li><code>tax-id</code> - Tax ID (CPF): ###.###.###-##</li>
+                    </ul>
+                    
+                    <h4>Spanish (es-ES)</h4>
+                    <ul>
+                        <li><code>nif</code> - NIF: ########-#</li>
+                        <li><code>nie</code> - NIE: #-########</li>
+                        <li><code>phone</code> - Phone: (###) ### ###</li>
+                    </ul>
+                </div>
+
+                <h2 id="rounding">Rounding Modes</h2>
+                <div class="api-section">
+                    <ul>
+                        <li><code>UP</code> - Rounds away from zero</li>
+                        <li><code>DOWN</code> - Rounds toward zero</li>
+                        <li><code>CEIL</code> - Rounds toward positive infinity</li>
+                        <li><code>FLOOR</code> - Rounds toward negative infinity</li>
+                        <li><code>HALF_UP</code> - Rounds to nearest, ties away from zero</li>
+                        <li><code>HALF_DOWN</code> - Rounds to nearest, ties toward zero</li>
+                        <li><code>HALF_EVEN</code> - Rounds to nearest, ties to even neighbor</li>
+                    </ul>
+                </div>
+
+                <h2 id="locales">Formats by Locale</h2>
+                <div class="table-responsive">
+                    <table class="table locale-table">
+                        <thead>
+                            <tr>
+                                <th>Locale</th>
+                                <th>Decimals</th>
+                                <th>Thousands</th>
+                                <th>Abbreviations</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>en-US</td>
+                                <td>.</td>
+                                <td>,</td>
+                                <td>k, M, B, T</td>
+                                <td>1,234.56</td>
+                            </tr>
+                            <tr>
+                                <td>pt-BR</td>
+                                <td>,</td>
+                                <td>.</td>
+                                <td>mil, mi, bi, tri</td>
+                                <td>1.234,56</td>
+                            </tr>
+                            <tr>
+                                <td>es-ES</td>
+                                <td>,</td>
+                                <td>.</td>
+                                <td>mil, M, MM, B</td>
+                                <td>1.234,56</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="api">API Reference</h2>
+                <div class="api-section">
+                    <h4>Main Functions</h4>
+                    <ul>
+                        <li><code>beautify(number, options?)</code> - Format a number with various options</li>
+                        <li><code>formatNumber(number, decimals?, locale?, stripZeros?)</code> - Format a number with basic options</li>
+                        <li><code>formatCurrency(value, locale, options)</code> - Format a number as currency</li>
+                        <li><code>round(num, decimals, mode?)</code> - Round a number using specified mode</li>
+                        <li><code>abbreviateNumber(number, formattedNum, locale)</code> - Abbreviate a large number</li>
+                        <li><code>applyMask(value, pattern)</code> - Apply a mask to a number or string</li>
+                    </ul>
+                    
+                    <p>For detailed API documentation with types and all options, see the <a href="globals.html">API Reference</a>.</p>
+                </div>
+
+                <h2 id="contributing">Contributing</h2>
+                <ol>
+                    <li>Fork the project</li>
+                    <li>Create your feature branch (<code>git checkout -b feature/MyFeature</code>)</li>
+                    <li>Commit your changes (<code>git commit -am 'Adding a feature'</code>)</li>
+                    <li>Push to the branch (<code>git push origin feature/MyFeature</code>)</li>
+                    <li>Create a Pull Request</li>
+                </ol>
+
+                <div class="mt-5">
+                    <h4>License</h4>
+                    <p>MIT</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <div class="container">
+            <p>num-beauty v0.1.0 &copy; 2023</p>
+            <p>
+                <a href="https://github.com/menesesevandro/num-beauty" class="text-white">GitHub</a> |
+                <a href="https://www.npmjs.com/package/num-beauty" class="text-white">npm</a> |
+                <a href="globals.html" class="text-white">API Documentation</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+</body>
+</html>
