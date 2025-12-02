@@ -1,0 +1,57 @@
+{
+    "name": "@num-beauty/vue",
+    "version": "0.1.0",
+    "type": "module",
+    "description": "Vue 3 integration for num-beauty",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "build:prod": "tsc -p tsconfig.prod.json",
+        "clean": "rm -rf dist",
+        "test": "vitest run",
+        "lint": "eslint \"src/**/*.{ts,tsx,vue}\" --fix",
+        "typecheck": "tsc --noEmit"
+    },
+    "keywords": [
+        "number",
+        "formatting",
+        "vue",
+        "vue3",
+        "composable",
+        "component"
+    ],
+    "author": "Evandro Meneses",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MenesesEvandro/num-beauty.git",
+        "directory": "packages/vue"
+    },
+    "peerDependencies": {
+        "vue": ">=3.0.0"
+    },
+    "dependencies": {
+        "num-beauty": "workspace:*"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^6.0.2",
+        "@vue/test-utils": "^2.4.6",
+        "jsdom": "^27.2.0",
+        "typescript": "^5.8.0",
+        "vitest": "^4.0.14",
+        "vue": "^3.3.0"
+    },
+    "sideEffects": false
+}

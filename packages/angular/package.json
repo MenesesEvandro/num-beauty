@@ -1,0 +1,28 @@
+{
+    "name": "@num-beauty/angular",
+    "version": "0.0.0",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsup src/index.ts --format cjs,esm --dts",
+        "test": "vitest run"
+    },
+    "peerDependencies": {
+        "@angular/common": "^16.0.0 || ^17.0.0",
+        "@angular/core": "^16.0.0 || ^17.0.0"
+    },
+    "dependencies": {
+        "num-beauty": "workspace:^"
+    },
+    "devDependencies": {
+        "@angular/common": "^17.0.0",
+        "@angular/core": "^17.0.0",
+        "@types/node": "^20.0.0",
+        "rxjs": "^7.0.0",
+        "tsup": "^8.0.0",
+        "typescript": "^5.0.0",
+        "vitest": "^4.0.14",
+        "zone.js": "^0.14.0"
+    }
+}

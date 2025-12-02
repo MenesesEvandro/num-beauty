@@ -1,0 +1,128 @@
+[
+  {
+    "name": "Core (Full Bundle)",
+    "path": "dist/index.js",
+    "limit": "8 KB",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Core - Round Only",
+    "path": "dist/services/rounding.service.js",
+    "limit": "450 B",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Core - Formatting Only",
+    "path": "dist/services/formatting.service.js",
+    "limit": "350 B",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Core - Currency Only",
+    "path": "dist/services/currency.service.js",
+    "limit": "2.6 KB",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Core - Bytes Only",
+    "path": "dist/services/bytes.service.js",
+    "limit": "520 B",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Core - Percentage Only",
+    "path": "dist/services/percentage.service.js",
+    "limit": "280 B",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Core - Abbreviation Only",
+    "path": "dist/services/abbreviation.service.js",
+    "limit": "2.7 KB",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Core - Mask Only",
+    "path": "dist/services/mask.service.js",
+    "limit": "2.7 KB",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Core - Parts Only",
+    "path": "dist/services/parts.service.js",
+    "limit": "4.8 KB",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Core - Parsing Only",
+    "path": "dist/services/parsing.service.js",
+    "limit": "3 KB",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Core - Accessibility Only",
+    "path": "dist/services/accessibility.service.js",
+    "limit": "4 KB",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "React Integration",
+    "path": "dist/react/index.js",
+    "limit": "5.5 KB",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Fluent API",
+    "path": "dist/fluent.js",
+    "limit": "8 KB",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Locale - en-US",
+    "path": "dist/locales/en-US.js",
+    "limit": "450 B",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Locale - pt-BR",
+    "path": "dist/locales/pt-BR.js",
+    "limit": "600 B",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Locale - es-ES",
+    "path": "dist/locales/es-ES.js",
+    "limit": "520 B",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Locale - de-DE",
+    "path": "dist/locales/de-DE.js",
+    "limit": "570 B",
+    "gzip": true,
+    "brotli": true
+  },
+  {
+    "name": "Locale - fr-FR",
+    "path": "dist/locales/fr-FR.js",
+    "limit": "600 B",
+    "gzip": true,
+    "brotli": true
+  }
+]

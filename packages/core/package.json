@@ -1,0 +1,158 @@
+{
+  "name": "num-beauty",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "An ultra lightweight module for formatting numbers into human-friendly strings",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./round": {
+      "import": "./dist/services/rounding.service.js",
+      "types": "./dist/services/rounding.service.d.ts"
+    },
+    "./format": {
+      "import": "./dist/services/formatting.service.js",
+      "types": "./dist/services/formatting.service.d.ts"
+    },
+    "./currency": {
+      "import": "./dist/services/currency.service.js",
+      "types": "./dist/services/currency.service.d.ts"
+    },
+    "./abbreviate": {
+      "import": "./dist/services/abbreviation.service.js",
+      "types": "./dist/services/abbreviation.service.d.ts"
+    },
+    "./mask": {
+      "import": "./dist/services/mask.service.js",
+      "types": "./dist/services/mask.service.d.ts"
+    },
+    "./bytes": {
+      "import": "./dist/services/bytes.service.js",
+      "types": "./dist/services/bytes.service.d.ts"
+    },
+    "./percentage": {
+      "import": "./dist/services/percentage.service.js",
+      "types": "./dist/services/percentage.service.d.ts"
+    },
+    "./locales": {
+      "import": "./dist/locales/index.js",
+      "types": "./dist/locales/index.d.ts"
+    },
+    "./locales/loader": {
+      "import": "./dist/locales/loader.js",
+      "types": "./dist/locales/loader.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react/index.js",
+      "types": "./dist/react/index.d.ts"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "pnpm run clean && tsc",
+    "build:prod": "pnpm run clean && tsc -p tsconfig.prod.json && node minify.cjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "benchmark": "node benchmark.cjs",
+    "benchmark:ci": "pnpm run build:prod && node scripts/benchmark.mjs",
+    "test:runtime": "pnpm run build && node tests/runtime/test-runtime.mjs",
+    "test:runtime:all": "pnpm run test:runtime && echo '\nTesting with Deno...' && deno run --allow-read tests/runtime/test-runtime.mjs && echo '\nTesting with Bun...' && bun tests/runtime/test-runtime.mjs",
+    "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "prepublishOnly": "pnpm run test && pnpm run lint && pnpm run build:prod",
+    "preversion": "pnpm run lint",
+    "version": "pnpm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "docs": "typedoc",
+    "docs:watch": "typedoc --watch",
+    "size": "pnpm run build:prod && size-limit",
+    "size:analyze": "pnpm run build:prod && du -sh dist/* | sort -hr"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "number",
+    "formatting",
+    "locale",
+    "mask",
+    "typescript",
+    "format",
+    "pretty",
+    "big",
+    "human",
+    "readable",
+    "string",
+    "text",
+    "exponential",
+    "thousands",
+    "separator",
+    "significant",
+    "round",
+    "decimal",
+    "fixed",
+    "decrease",
+    "precision",
+    "react",
+    "hook",
+    "component",
+    "jsx"
+  ],
+  "author": "Evandro Meneses Carneiro",
+  "homepage": "https://github.com/MenesesEvandro/num-beauty/#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MenesesEvandro/num-beauty/.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MenesesEvandro/num-beauty//issues"
+  },
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.27.0",
+    "@size-limit/preset-small-lib": "^11.2.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "fast-check": "^4.3.0",
+    "husky": "^7.0.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "lint-staged": "^11.2.0",
+    "prettier": "^2.4.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "terser": "^5.39.2",
+    "ts-node": "^10.4.0",
+    "typedoc": "^0.28.14",
+    "typedoc-plugin-markdown": "^4.6.3",
+    "typescript": "^5.8.0",
+    "vitest": "^4.0.14"
+  }
+}
