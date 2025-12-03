@@ -41,7 +41,7 @@ jobs:
         run: pnpm install --frozen-lockfile
       
       - name: Run benchmarks (current)
-        run: pnpm run benchmark:ci -- --output benchmark-current.json
+        run: pnpm --filter num-beauty run benchmark:ci -- --output benchmark-current.json
       
       - name: Save current results
         uses: actions/upload-artifact@v4
@@ -61,7 +61,7 @@ jobs:
       
       - name: Run benchmarks (base)
         if: github.event_name == 'pull_request'
-        run: pnpm run benchmark:ci -- --output benchmark-base.json
+        run: pnpm --filter num-beauty run benchmark:ci -- --output benchmark-base.json
       
       - name: Compare benchmarks
         if: github.event_name == 'pull_request'

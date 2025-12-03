@@ -68,4 +68,4 @@ jobs:
       - name: Test affected packages
         env:
           FILTER_SPEC: ${{ steps.diff.outputs.filter_spec }}
-        run: pnpm --filter "...[${FILTER_SPEC}]" test -- --runInBand --no-coverage
+        run: pnpm --filter "...[${FILTER_SPEC}]" test
