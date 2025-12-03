@@ -1,6 +1,6 @@
 {
     "name": "@num-beauty/sheets",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "scripts": {
         "build": "tsup src/index.ts --format iife --global-name NumBeauty --minify",
         "test": "vitest run"
