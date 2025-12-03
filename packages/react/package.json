@@ -1,0 +1,73 @@
+{
+  "name": "@num-beauty/react",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "React integration for num-beauty with Context API and reactive hooks",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.js",
+      "types": "./dist/hooks/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.js",
+      "types": "./dist/components/index.d.ts"
+    },
+    "./context": {
+      "import": "./dist/context/index.js",
+      "types": "./dist/context/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:prod": "tsc -p tsconfig.prod.json",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "number",
+    "formatting",
+    "react",
+    "hooks",
+    "locale",
+    "currency",
+    "i18n",
+    "internationalization"
+  ],
+  "author": "Evandro Meneses",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MenesesEvandro/num-beauty.git",
+    "directory": "packages/react"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "dependencies": {
+    "num-beauty": "workspace:*"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@types/react": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "jsdom": "^27.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.8.0",
+    "vitest": "^4.0.14"
+  },
+  "sideEffects": false
+}

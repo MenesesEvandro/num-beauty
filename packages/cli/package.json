@@ -1,0 +1,43 @@
+{
+    "name": "@num-beauty/cli",
+    "version": "0.1.0",
+    "type": "module",
+    "description": "CLI tool for num-beauty",
+    "bin": {
+        "num-beauty": "./dist/index.js",
+        "nb": "./dist/index.js"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build": "tsc && chmod +x dist/index.js",
+        "clean": "rm -rf dist",
+        "test": "vitest run",
+        "start": "node dist/index.js"
+    },
+    "keywords": [
+        "number",
+        "formatting",
+        "cli",
+        "terminal"
+    ],
+    "author": "Evandro Meneses",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MenesesEvandro/num-beauty.git",
+        "directory": "packages/cli"
+    },
+    "dependencies": {
+        "commander": "^11.0.0",
+        "num-beauty": "workspace:*"
+    },
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "typescript": "^5.8.0",
+        "vitest": "^4.0.14"
+    }
+}

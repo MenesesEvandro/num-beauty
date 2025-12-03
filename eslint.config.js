@@ -4,19 +4,32 @@ import tsPlugin from '@typescript-eslint/eslint-plugin';
 import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 export default [
   js.configs.recommended,
   {
-    files: ['**/*.ts'],
+    ignores: ['**/*.svelte'],
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: './tsconfig.eslint.json',
+        project: ['./packages/*/tsconfig.json', './packages/*/tsconfig.eslint.json', './tsconfig.json'],
+        tsconfigRootDir: __dirname,
         ecmaVersion: 'latest',
         sourceType: 'module',
       },
       globals: {
         console: 'readonly',
+        document: 'readonly',
+        window: 'readonly',
+        HTMLElement: 'readonly',
+        customElements: 'readonly',
       },
     },
     plugins: {

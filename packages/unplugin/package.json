@@ -1,0 +1,26 @@
+{
+    "name": "@num-beauty/unplugin",
+    "version": "0.0.0",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsup src/index.ts --format cjs,esm --dts",
+        "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+        "test": "vitest run"
+    },
+    "dependencies": {
+        "@babel/parser": "^7.0.0",
+        "estree-walker": "^2.0.2",
+        "magic-string": "^0.30.0",
+        "num-beauty": "workspace:^",
+        "unplugin": "^1.0.0"
+    },
+    "devDependencies": {
+        "@types/estree": "^1.0.0",
+        "@types/node": "^20.0.0",
+        "tsup": "^8.0.0",
+        "typescript": "^5.0.0",
+        "vitest": "^4.0.14"
+    }
+}

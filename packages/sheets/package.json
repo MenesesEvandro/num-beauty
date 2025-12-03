@@ -1,0 +1,18 @@
+{
+    "name": "@num-beauty/sheets",
+    "version": "0.0.0",
+    "scripts": {
+        "build": "tsup src/index.ts --format iife --global-name NumBeauty --minify",
+        "test": "vitest run"
+    },
+    "dependencies": {
+        "num-beauty": "workspace:^"
+    },
+    "devDependencies": {
+        "@types/google-apps-script": "^1.0.0",
+        "@types/node": "^20.0.0",
+        "tsup": "^8.0.0",
+        "typescript": "^5.0.0",
+        "vitest": "^4.0.14"
+    }
+}

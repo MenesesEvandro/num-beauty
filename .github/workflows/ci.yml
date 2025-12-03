@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+  push:
+    branches:
+      - main
+      - dev
+      - 'feature/**'
+      - 'hotfix/**'
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Determine diff target
+        id: diff
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "filter_spec=origin/${{ github.base_ref }}" >> "$GITHUB_OUTPUT"
+            echo "fetch_ref=${{ github.base_ref }}" >> "$GITHUB_OUTPUT"
+          else
+            if [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+              if git rev-parse HEAD^ >/dev/null 2>&1; then
+                echo "filter_spec=HEAD^" >> "$GITHUB_OUTPUT"
+              else
+                echo "filter_spec=HEAD" >> "$GITHUB_OUTPUT"
+              fi
+            else
+              echo "filter_spec=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
+            fi
+            echo "fetch_ref=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fetch base branch
+        if: steps.diff.outputs.fetch_ref != ''
+        run: git fetch origin ${{ steps.diff.outputs.fetch_ref }}
+
+      - name: Lint affected packages
+        env:
+          FILTER_SPEC: ${{ steps.diff.outputs.filter_spec }}
+        run: pnpm --filter "...[${FILTER_SPEC}]" lint
+
+      - name: Test affected packages
+        env:
+          FILTER_SPEC: ${{ steps.diff.outputs.filter_spec }}
+        run: pnpm --filter "...[${FILTER_SPEC}]" test

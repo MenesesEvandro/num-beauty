@@ -1,0 +1,31 @@
+{
+    "name": "@num-beauty/solid",
+    "version": "0.0.0",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsup src/index.tsx --format cjs,esm --dts",
+        "test": "vitest run"
+    },
+    "peerDependencies": {
+        "solid-js": "^1.0.0"
+    },
+    "dependencies": {
+        "num-beauty": "workspace:^"
+    },
+    "devDependencies": {
+        "@babel/preset-env": "^7.28.5",
+        "@babel/preset-typescript": "^7.28.5",
+        "@solidjs/testing-library": "^0.8.10",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@types/node": "^20.0.0",
+        "babel-preset-solid": "^1.8.0",
+        "jsdom": "^27.2.0",
+        "solid-js": "^1.8.0",
+        "tsup": "^8.0.0",
+        "typescript": "^5.0.0",
+        "vite-plugin-solid": "^2.11.10",
+        "vitest": "^4.0.14"
+    }
+}
