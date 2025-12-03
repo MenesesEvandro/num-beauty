@@ -20,17 +20,22 @@ jobs:
         with:
           fetch-depth: 0
       
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.0
+
       - name: Use Node.js 18
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
+          cache: 'pnpm'
       
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps || npm install --legacy-peer-deps
+        run: pnpm install --frozen-lockfile
       
       - name: Build for production
-        run: npm run build:prod
+        run: pnpm run build:prod
       
       - name: Check bundle size
         uses: andresz1/size-limit-action@v1

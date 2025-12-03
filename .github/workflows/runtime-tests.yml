@@ -29,17 +29,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.0
+
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: 'pnpm'
       
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       
       - name: Build project
-        run: npm run build
+        run: pnpm run build
       
       - name: Run runtime tests
         run: node tests/runtime/test-runtime.mjs
@@ -61,14 +66,19 @@ jobs:
         with:
           deno-version: ${{ matrix.deno-version }}
       
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.0
+
       - name: Setup Node.js (for build)
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: 'pnpm'
       
       - name: Install dependencies and build
-        run: npm ci && npm run build
+        run: pnpm install --frozen-lockfile && pnpm run build
       
       - name: Run runtime tests with Deno
         run: deno run --allow-read tests/runtime/test-runtime.mjs
