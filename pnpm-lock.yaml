@@ -14,6 +14,9 @@ importers:
       '@changesets/cli':
         specifier: ^2.27.1
         version: 2.29.7(@types/node@24.10.1)
+      husky:
+        specifier: ^7.0.0
+        version: 7.0.4
 
   packages/angular:
     dependencies:

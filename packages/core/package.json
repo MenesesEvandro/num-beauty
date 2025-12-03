@@ -1,6 +1,6 @@
 {
   "name": "num-beauty",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "description": "An ultra lightweight module for formatting numbers into human-friendly strings",
   "main": "dist/index.js",
